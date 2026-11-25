@@ -1,0 +1,897 @@
+{
+  "$defs": {
+    "Case": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "Case",
+          "default": "Case",
+          "title": "Type",
+          "type": "string"
+        },
+        "created_by": {
+          "pattern": "^[a-z][a-z0-9-]{0,47}$",
+          "title": "Created By",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "marking_id": {
+          "title": "Marking Id",
+          "type": "string"
+        },
+        "version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "previous_version": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Previous Version"
+        },
+        "modified_at": {
+          "format": "date-time",
+          "title": "Modified At",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "created_by",
+        "created_at",
+        "marking_id",
+        "modified_at",
+        "name"
+      ],
+      "title": "Case",
+      "type": "object"
+    },
+    "HashArtifact": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "HashArtifact",
+          "default": "HashArtifact",
+          "title": "Type",
+          "type": "string"
+        },
+        "created_by": {
+          "pattern": "^[a-z][a-z0-9-]{0,47}$",
+          "title": "Created By",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "marking_id": {
+          "title": "Marking Id",
+          "type": "string"
+        },
+        "algorithm": {
+          "enum": [
+            "md5",
+            "sha1",
+            "sha256",
+            "sha512",
+            "pdq",
+            "photodna",
+            "other-robust"
+          ],
+          "title": "Algorithm",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 8192,
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        },
+        "calculated_at": {
+          "format": "date-time",
+          "title": "Calculated At",
+          "type": "string"
+        },
+        "algorithm_version": {
+          "anyOf": [
+            {
+              "maxLength": 1024,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Algorithm Version"
+        },
+        "encoding": {
+          "default": "hex",
+          "enum": [
+            "hex",
+            "base64",
+            "opaque"
+          ],
+          "title": "Encoding",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "created_by",
+        "created_at",
+        "marking_id",
+        "algorithm",
+        "value",
+        "calculated_at"
+      ],
+      "title": "HashArtifact",
+      "type": "object"
+    },
+    "HostingReference": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "HostingReference",
+          "default": "HostingReference",
+          "title": "Type",
+          "type": "string"
+        },
+        "created_by": {
+          "pattern": "^[a-z][a-z0-9-]{0,47}$",
+          "title": "Created By",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "marking_id": {
+          "title": "Marking Id",
+          "type": "string"
+        },
+        "resource": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Resource",
+          "type": "string"
+        },
+        "observed_at": {
+          "format": "date-time",
+          "title": "Observed At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "created_by",
+        "created_at",
+        "marking_id",
+        "resource",
+        "observed_at"
+      ],
+      "title": "HostingReference",
+      "type": "object"
+    },
+    "Infrastructure": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "Infrastructure",
+          "default": "Infrastructure",
+          "title": "Type",
+          "type": "string"
+        },
+        "created_by": {
+          "pattern": "^[a-z][a-z0-9-]{0,47}$",
+          "title": "Created By",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "marking_id": {
+          "title": "Marking Id",
+          "type": "string"
+        },
+        "version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "previous_version": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Previous Version"
+        },
+        "modified_at": {
+          "format": "date-time",
+          "title": "Modified At",
+          "type": "string"
+        },
+        "channel": {
+          "enum": [
+            "p2p",
+            "darknet",
+            "clearweb",
+            "device",
+            "social",
+            "messaging",
+            "other"
+          ],
+          "title": "Channel",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "external_id": {
+          "anyOf": [
+            {
+              "maxLength": 1024,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "External Id"
+        }
+      },
+      "required": [
+        "id",
+        "created_by",
+        "created_at",
+        "marking_id",
+        "modified_at",
+        "channel",
+        "name"
+      ],
+      "title": "Infrastructure",
+      "type": "object"
+    },
+    "KeywordArtifact": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "KeywordArtifact",
+          "default": "KeywordArtifact",
+          "title": "Type",
+          "type": "string"
+        },
+        "created_by": {
+          "pattern": "^[a-z][a-z0-9-]{0,47}$",
+          "title": "Created By",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "marking_id": {
+          "title": "Marking Id",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "filename",
+            "tag",
+            "description"
+          ],
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "created_by",
+        "created_at",
+        "marking_id",
+        "value",
+        "source"
+      ],
+      "title": "KeywordArtifact",
+      "type": "object"
+    },
+    "Marking": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "Marking",
+          "default": "Marking",
+          "title": "Type",
+          "type": "string"
+        },
+        "created_by": {
+          "pattern": "^[a-z][a-z0-9-]{0,47}$",
+          "title": "Created By",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "distribution": {
+          "enum": [
+            "internal",
+            "community",
+            "connected_communities",
+            "global"
+          ],
+          "title": "Distribution",
+          "type": "string"
+        },
+        "recipients": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]{0,47}$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Recipients",
+          "type": "array"
+        },
+        "communities": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]{0,47}$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Communities",
+          "type": "array"
+        },
+        "allow_redistribution": {
+          "default": false,
+          "title": "Allow Redistribution",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "created_by",
+        "created_at",
+        "distribution"
+      ],
+      "title": "Marking",
+      "type": "object"
+    },
+    "MediaInstance": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "MediaInstance",
+          "default": "MediaInstance",
+          "title": "Type",
+          "type": "string"
+        },
+        "created_by": {
+          "pattern": "^[a-z][a-z0-9-]{0,47}$",
+          "title": "Created By",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "marking_id": {
+          "title": "Marking Id",
+          "type": "string"
+        },
+        "version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "previous_version": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Previous Version"
+        },
+        "modified_at": {
+          "format": "date-time",
+          "title": "Modified At",
+          "type": "string"
+        },
+        "media_type": {
+          "enum": [
+            "image",
+            "video",
+            "unknown"
+          ],
+          "title": "Media Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "created_by",
+        "created_at",
+        "marking_id",
+        "modified_at",
+        "media_type"
+      ],
+      "title": "MediaInstance",
+      "type": "object"
+    },
+    "MetadataArtifact": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "MetadataArtifact",
+          "default": "MetadataArtifact",
+          "title": "Type",
+          "type": "string"
+        },
+        "created_by": {
+          "pattern": "^[a-z][a-z0-9-]{0,47}$",
+          "title": "Created By",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "marking_id": {
+          "title": "Marking Id",
+          "type": "string"
+        },
+        "metadata_type": {
+          "enum": [
+            "image",
+            "video",
+            "file"
+          ],
+          "title": "Metadata Type",
+          "type": "string"
+        },
+        "key": {
+          "enum": [
+            "width",
+            "height",
+            "duration_seconds",
+            "file_size",
+            "mime_type",
+            "camera_model",
+            "software",
+            "created_at"
+          ],
+          "title": "Key",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
+          "title": "Value"
+        },
+        "reliability": {
+          "enum": [
+            "unknown",
+            "unchecked",
+            "checked"
+          ],
+          "title": "Reliability",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "created_by",
+        "created_at",
+        "marking_id",
+        "metadata_type",
+        "key",
+        "value",
+        "reliability"
+      ],
+      "title": "MetadataArtifact",
+      "type": "object"
+    },
+    "Reference": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "version": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Version"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "title": "Reference",
+      "type": "object"
+    },
+    "Relation": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "Relation",
+          "default": "Relation",
+          "title": "Type",
+          "type": "string"
+        },
+        "created_by": {
+          "pattern": "^[a-z][a-z0-9-]{0,47}$",
+          "title": "Created By",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "marking_id": {
+          "title": "Marking Id",
+          "type": "string"
+        },
+        "version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "previous_version": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Previous Version"
+        },
+        "modified_at": {
+          "format": "date-time",
+          "title": "Modified At",
+          "type": "string"
+        },
+        "relation_type": {
+          "enum": [
+            "describes",
+            "belongs-to",
+            "instance-of",
+            "refers-to",
+            "related-to"
+          ],
+          "title": "Relation Type",
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/Reference"
+        },
+        "target": {
+          "$ref": "#/$defs/Reference"
+        },
+        "status": {
+          "default": "active",
+          "enum": [
+            "active",
+            "inactive"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "maxLength": 1024,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        }
+      },
+      "required": [
+        "id",
+        "created_by",
+        "created_at",
+        "marking_id",
+        "modified_at",
+        "relation_type",
+        "source",
+        "target"
+      ],
+      "title": "Relation",
+      "type": "object"
+    },
+    "Series": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "Series",
+          "default": "Series",
+          "title": "Type",
+          "type": "string"
+        },
+        "created_by": {
+          "pattern": "^[a-z][a-z0-9-]{0,47}$",
+          "title": "Created By",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "marking_id": {
+          "title": "Marking Id",
+          "type": "string"
+        },
+        "version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "previous_version": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Previous Version"
+        },
+        "modified_at": {
+          "format": "date-time",
+          "title": "Modified At",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "created_by",
+        "created_at",
+        "marking_id",
+        "modified_at",
+        "name",
+        "description"
+      ],
+      "title": "Series",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "profile": {
+      "const": "media-intelligence",
+      "title": "Profile",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "package_id": {
+      "format": "uuid",
+      "title": "Package Id",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "sender": {
+      "pattern": "^[a-z][a-z0-9-]{0,47}$",
+      "title": "Sender",
+      "type": "string"
+    },
+    "recipient": {
+      "pattern": "^[a-z][a-z0-9-]{0,47}$",
+      "title": "Recipient",
+      "type": "string"
+    },
+    "objects": {
+      "items": {
+        "discriminator": {
+          "mapping": {
+            "Case": "#/$defs/Case",
+            "HashArtifact": "#/$defs/HashArtifact",
+            "HostingReference": "#/$defs/HostingReference",
+            "Infrastructure": "#/$defs/Infrastructure",
+            "KeywordArtifact": "#/$defs/KeywordArtifact",
+            "Marking": "#/$defs/Marking",
+            "MediaInstance": "#/$defs/MediaInstance",
+            "MetadataArtifact": "#/$defs/MetadataArtifact",
+            "Relation": "#/$defs/Relation",
+            "Series": "#/$defs/Series"
+          },
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/Marking"
+          },
+          {
+            "$ref": "#/$defs/HashArtifact"
+          },
+          {
+            "$ref": "#/$defs/MetadataArtifact"
+          },
+          {
+            "$ref": "#/$defs/KeywordArtifact"
+          },
+          {
+            "$ref": "#/$defs/HostingReference"
+          },
+          {
+            "$ref": "#/$defs/MediaInstance"
+          },
+          {
+            "$ref": "#/$defs/Case"
+          },
+          {
+            "$ref": "#/$defs/Series"
+          },
+          {
+            "$ref": "#/$defs/Infrastructure"
+          },
+          {
+            "$ref": "#/$defs/Relation"
+          }
+        ]
+      },
+      "maxItems": 2000,
+      "minItems": 1,
+      "title": "Objects",
+      "type": "array"
+    }
+  },
+  "required": [
+    "profile",
+    "schema_version",
+    "package_id",
+    "created_at",
+    "sender",
+    "recipient",
+    "objects"
+  ],
+  "title": "Package",
+  "type": "object"
+}

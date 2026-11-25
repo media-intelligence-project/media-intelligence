@@ -1,0 +1,12 @@
+services:
+  tests:
+    build: .
+    user: "0:0"
+    environment:
+      TEST_DATABASE_URL: postgresql+psycopg://media_intelligence:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}@db/media_intelligence
+    volumes:
+      - ./tests:/app/tests:ro
+    command: ["sh", "-c", "pip install --no-cache-dir '.[test]' && pytest -q"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
